@@ -6,6 +6,9 @@ mk-build-deps -i --tool 'apt-get --yes'
 
 debuild -uc -us
 
-rm -f release/*
+cd ..
+
+rm -f release/*.deb
 
 mv *.deb release/
+rm -f *.build *.buildinfo *.changes *.dsc
