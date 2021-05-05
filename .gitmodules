@@ -1,0 +1,3 @@
+[submodule "nx-libs"]
+	path = nx-libs
+	url = https://github.com/ArcticaProject/nx-libs.git

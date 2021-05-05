@@ -1,0 +1,28 @@
+#!/bin/bash
+set -x
+
+echo "Running docker_build script for remote-control build..."
+
+script_error="##SCRIPT ERROR##"
+
+check_error() {
+
+  if [ $? -eq 0 ]; then
+    echo $1 " check_error success!"
+  else
+    echo $1 " check_error error!"
+    echo $script_errror
+    exit 1
+  fi
+}
+
+docker image inspect lilitun/nx-libs-build:1.0 &>/dev/null
+if [ $? -ne 0 ]; then
+    docker build -t lilitun/nx-libs-build:1.0 docker-build
+    check_error "docker build -t lilitun/nx-build:1.0 ."
+fi
+
+docker run -ti --rm -v $PWD/..:/root/src lilitun/nx-libs-build:1.0
+check_error "docker run -ti --rm -v $PWD/..:/root/src lilitun/nx-build-build:1.0"
+
+echo "LiliTun remote control build completed successfully!!"
