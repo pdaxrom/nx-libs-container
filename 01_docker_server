@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-echo "Running docker_server script for remote-control server..."
+echo "Running docker nx-libs server script..."
 
 script_error="##SCRIPT ERROR##"
 
@@ -29,9 +29,7 @@ if [ "$REMOTE_HOST_NAME" = "" ]; then
     REMOTE_HOST_NAME=$(hostname)
 fi
 
-docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME lilitun/nx-libs-build:1.0
-check_error "docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME -v $PWD/cert:/cert -p 443:443 lilitun/remote-control-server:1.0"
+docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME lilitun/nx-libs-run:1.0
+check_error "docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME lilitun/nx-libs-run:1.0"
 
-#docker rmi lilitun/remote-control-server:1.0
-
-echo "LiliTun remote control server finished successfully!!"
+echo "LiliTun server finished successfully!!"
