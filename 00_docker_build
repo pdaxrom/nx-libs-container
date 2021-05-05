@@ -22,7 +22,7 @@ if [ $? -ne 0 ]; then
     check_error "docker build -t lilitun/nx-build:1.0 ."
 fi
 
-docker run -ti --rm -v $PWD/..:/root/src lilitun/nx-libs-build:1.0
-check_error "docker run -ti --rm -v $PWD/..:/root/src lilitun/nx-build-build:1.0"
+docker run -ti --rm -v $PWD:/root/src lilitun/nx-libs-build:1.0
+check_error "docker run -ti --rm -v $PWD:/root/src lilitun/nx-build-build:1.0"
 
 echo "LiliTun remote control build completed successfully!!"
