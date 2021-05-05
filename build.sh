@@ -11,4 +11,4 @@ cd ..
 rm -f release/*.deb
 
 mv *.deb release/
-rm -f *.build *.buildinfo *.changes *.dsc
+rm -f *.build *.buildinfo *.changes *.dsc *.tar.gz
