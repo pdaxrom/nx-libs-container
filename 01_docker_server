@@ -29,7 +29,9 @@ if [ "$REMOTE_HOST_NAME" = "" ]; then
     REMOTE_HOST_NAME=$(hostname)
 fi
 
-docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME lilitun/nx-libs-run:1.0
-check_error "docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME lilitun/nx-libs-run:1.0"
+docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME -v /tmp/.X11-unix:/tmp/.X11-unix -p 5000:5000 lilitun/nx-libs-run:1.0
+check_error "docker run -ti --rm -e HOST_NAME=$REMOTE_HOST_NAME -h $REMOTE_HOST_NAME -v /tmp/.X11-unix:/tmp/.X11-unix lilitun/nx-libs-run:1.0"
+
+#nxagent -D -display nx/nx,link=modem:1000 :1000
 
 echo "LiliTun server finished successfully!!"
